@@ -1,0 +1,136 @@
+{% extends 'base_template.html' %}
+{% block title %} {{ title }} {% endblock %}}
+{% block h1 %} {{ title }} {% endblock %}
+
+{% block market_active %} active {% endblock %}
+{% block market_span %} <span class="sr-only">(current)</span> {% endblock %}
+
+{% block content %}
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="Nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/market/bikes">Велосипеды</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/market/lessons">Занятия</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/market/parts">Запчасти
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/market/parts_create/">Добавить</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/market/parts_update/">Изменить
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/market/parts_delete/">Удалить</a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p> </p><br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}"><b>{{ message }}</b></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <p> </p><br>
+
+    <div class="box-outer">
+        <form name="nav-signup-form" method="post" action="" autocomplete="off">
+            <label>Название велосипеда</label>
+                <input type="text" name="parts_name_old" class="input-control" placeholder="укажи название запчасти"><br>
+            <label>Новое название</label>
+                <input type="text" name="parts_name_new" class="input-control" placeholder="измененное название"><br>
+            <label>Описание</label>
+                <input type="text" name="parts_about" class="input-control" placeholder="новое описание запчасти"><br>
+            <label>Стоимость</label>
+                <input type="text" name="parts_price" class="input-control" placeholder="стоимость запчасти в руб."><br>
+                <input type="submit" name="submit" class="button" value="Изменить">
+        </form>
+    </div>
+{% endblock %}
+
+{% block style %}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        }
+
+    .box-outer {
+        max-width: 600px; /* Максимальная ширина формы */
+        margin: 0 auto;   /* Центрирует форму на странице */
+        }
+
+    .container {
+        max-width: 400px;
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+    .input-control {
+        width: 100%;     /* Использует всю доступную ширину внутри box-outer */
+        max-width: 300px; /* Ограничивает максимальную ширину полей ввода */
+        margin-bottom: 10px;
+        padding: 5px;
+        }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+        }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+{% endblock %}

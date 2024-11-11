@@ -1,0 +1,24 @@
+{% extends 'base_template.html' %}
+{% block title %} {{ title }} {% endblock %}}
+{% block h1 %} {{ title }} {% endblock %}
+
+{% block contacts_active %} active {% endblock %}
+{% block contacts_span %} <span class="sr-only">(current)</span> {% endblock %}
+
+{% block content %}
+    <p> </p><br>
+    <ul>
+        <li>
+            <h5>Phone:</h5>
+            <a class="nav-link" href="tel:+79879246784">+7 (987) 924-67-84</a>
+        </li><br>
+        <li>
+            <h5>Telegram:</h5>
+            <a class="nav-link" href="t.me/gvardeec">t.me/gvardeec</a>
+        </li><br>
+        <li>
+            <h5>VK:</h5>
+            <a class="nav-link" href="https://vk.com/alex_gvardeec">https://vk.com/alex_gvardeec</a>
+        </li>
+    </ul>
+{% endblock %}

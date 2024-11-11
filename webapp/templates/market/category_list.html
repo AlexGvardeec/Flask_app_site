@@ -1,0 +1,94 @@
+{% extends 'base_template.html' %}
+{% block title %} {{ title }} {% endblock %}}
+{% block h1 %} {{ title }} {% endblock %}
+
+{% block market_active %} active {% endblock %}
+{% block market_span %} <span class="sr-only">(current)</span> {% endblock %}
+
+{% block content %}
+    <p> </p><br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}"><b>{{ message }}</b></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    <p> </p><br>
+
+    <div class="box-outer">
+        <form name="nav-signup-form" method="post" action="" autocomplete="off">
+            <label>Показать категории</label>
+                <input type="submit" name="submit" class="button" value="Показать категории">
+        </form>
+    </div>
+{% endblock %}
+
+{% block style %}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        }
+
+    .box-outer {
+        max-width: 600px; /* Максимальная ширина формы */
+        margin: 0 auto;   /* Центрирует форму на странице */
+        }
+
+    .container {
+        max-width: 400px;
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+    .input-control {
+        width: 100%;     /* Использует всю доступную ширину внутри box-outer */
+        max-width: 300px; /* Ограничивает максимальную ширину полей ввода */
+        margin-bottom: 10px;
+        padding: 5px;
+        }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+        }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+{% endblock %}

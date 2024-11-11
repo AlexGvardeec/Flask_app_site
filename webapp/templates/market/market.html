@@ -1,0 +1,43 @@
+{% extends 'base_template.html' %}
+{% block title %} {{ title }} {% endblock %}}
+{% block h1 %} {{ title }} {% endblock %}
+
+{% block market_active %} active {% endblock %}
+{% block market_span %} <span class="sr-only">(current)</span> {% endblock %}
+
+{% block content %}
+    <p> </p><br>
+    <h5>Выбери необходимую категорию товара:</h5>
+    <ul>
+        {% for k in categories %}
+            <li>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <a class="nav-link" href="/market/{{ k.route }}">{{ k.name }}</a>
+                </button>
+            </li>
+        {% endfor %}
+        <p> </p><br>
+
+        <li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <a class="nav-link" href="/market/category_create/">Создать новую категорию</a>
+            </button>
+        </li>
+        <li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <a class="nav-link" href="/market/category_list/">Показать категории</a>
+            </button>
+        </li>
+        <li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <a class="nav-link" href="/market/category_update/">Изменить категорию</a>
+            </button>
+        </li>
+        <li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <a class="nav-link" href="/market/category_delete/">Удалить категорию</a>
+            </button>
+        </li>
+    </ul>
+{% endblock %}
+
